@@ -28,12 +28,6 @@ public class AuthorizationServerApplication {
 	public DataSource mainDataSource() {
 		return DataSourceBuilder.create().type(HikariDataSource.class).build();
 	}
-	/*@Bean
-	public ServletRegistrationBean h2servletRegistration() {
-		ServletRegistrationBean registration = new ServletRegistrationBean(new WebdavServlet());
-		registration.addUrlMappings("/console/*");
-		return registration;
-	}*/
 
 	public static void main(String[] args) {
 		SpringApplication.run(AuthorizationServerApplication.class, args);
