@@ -57,14 +57,13 @@ public class ClientsController {
             @RequestParam(value = "newClient", required = false) String newClient
     ) {
         if (newClient == null) {
-            //does not update the secret!
-            // TODO: delete tokens and approvals
+
             clientsDetailsService.updateClientDetails(clientDetails);
         } else {
             clientsDetailsService.addClientDetails(clientDetails);
         }
 
-        // If the user has entered a secret in the form update it.
+
         if (!clientDetails.getClientSecret().isEmpty()) {
             clientsDetailsService.updateClientSecret(clientDetails.getClientId(), clientDetails.getClientSecret());
         }

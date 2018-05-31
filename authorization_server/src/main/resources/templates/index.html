@@ -9,10 +9,12 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="page-header">OAuth Server Dashboard for BTP SaaS Solution</h1>
+    <h1 class="page-header">OAuth Server Administration Dashboard </h1>
     <div class="row">
         <div class="col-md-12" >
-            Logged in as: <b><span sec:authentication="name" ></span></b><br/>
+            <span sec:authorize="isAuthenticated()" style="display: inline-block;">
+                    <a th:href="@{/logout}">Sign Out</a>
+                </span>
         </div>
     </div>
 
@@ -39,7 +41,7 @@
                         <form action="/approval/revoke" method="POST">
                             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                             <input type="hidden" name="userId" th:value="${app.userId}"/>
-                            <input type="hidden" name="clientId" th:value="${approval.clientId}"/>
+                            <input type="hidden" name="clientId" th:value="${app.clientId}"/>
                             <input type="hidden" name="scope" th:value="${app.scope}"/>
                             <input type="hidden" name="expiresAt" th:value="${#dates.format(app.expiresAt, 'yyyy-MM-dd HH:mm:ss')}"/>
                             <input type="hidden" name="status" th:value="${app.status}"/>

@@ -14,7 +14,7 @@ spring:
         ddl-auto: none
 # --- server
 server:
-  port: 8081
+  port: 8083
 
 
 

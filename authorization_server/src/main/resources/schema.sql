@@ -27,14 +27,14 @@ create table `oauth_access_token` (
   authentication_id VARCHAR(255),
   user_name VARCHAR(255),
   client_id VARCHAR(255),
-  authentication VARBINARY(255),
+  authentication LONGBLOB,
   refresh_token VARCHAR(255)
 );
 drop table if exists oauth_refresh_token;
 create table `oauth_refresh_token`(
   token_id VARCHAR(255),
   token LONGBLOB,
-  authentication VARBINARY(255)
+  authentication LONGBLOB
 );
 drop table if exists authority;
 CREATE TABLE authority (
