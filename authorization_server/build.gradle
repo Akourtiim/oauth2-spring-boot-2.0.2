@@ -1,0 +1,75 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.4.RELEASE")
+    }
+}
+
+group 'com.aak'
+version '0.0.2-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    baseName = 'authorization_server'
+    version = '0.0.2'
+    from "gradle.properties"
+}
+
+springBoot {
+    mainClassName = "com.aak.AuthorizationServerApplication"
+
+}
+
+idea {
+    project {
+        languageLevel = '1.8'
+    }
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+configurations {
+    compile.exclude module: 'spring-boot-starter-tomcat' // we exchange tomcat with jetty
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile     'org.springframework.boot:spring-boot-devtools'
+    compile     'org.springframework.boot:spring-boot-starter-actuator'
+    compile     'org.springframework.boot:spring-boot-starter-jetty'
+    compile     'org.springframework.boot:spring-boot-starter-data-rest'
+    compile     'org.springframework.boot:spring-boot-starter-security'
+    compile     'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile     'org.springframework.boot:spring-boot-starter-web'
+    compile     'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile     'org.springframework.boot:spring-boot-starter-jdbc'
+    compile     'com.h2database:h2'
+    compile     'org.springframework.cloud:spring-cloud-starter-oauth2:2.0.0.RELEASE'
+    compile     'org.webjars:bootstrap:4.1.3'
+
+    compile     'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.4.RELEASE'
+    compile     'org.springframework.security.oauth:spring-security-oauth2:2.3.3.RELEASE'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.springframework.security:spring-security-test'
+}
