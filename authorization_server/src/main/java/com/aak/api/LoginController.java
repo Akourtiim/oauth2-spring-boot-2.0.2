@@ -21,6 +21,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 import static java.util.Arrays.asList;
 
 /**
@@ -65,7 +66,6 @@ public class LoginController {
     public String loginPage() {
         return "login";
     }
-
 
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)

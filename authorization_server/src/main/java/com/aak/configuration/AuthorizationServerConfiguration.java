@@ -58,7 +58,11 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-
+        // grant access to token_key and check_token endpoints for authenticated user
+        // isAuthenticated() because all clients are trusted clients
+        // see: http://projects.spring.io/spring-security-oauth/docs/oauth2.html#resource-server-configuration
+        oauthServer.tokenKeyAccess("isAuthenticated()")
+           .checkTokenAccess("isAuthenticated()");
     }
 
     @Override

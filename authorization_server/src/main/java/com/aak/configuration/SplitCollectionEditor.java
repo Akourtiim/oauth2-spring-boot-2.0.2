@@ -1,6 +1,7 @@
 package com.aak.configuration;
 
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
+import org.springframework.util.StringUtils;
 
 import java.util.Collection;
 
@@ -20,7 +21,7 @@ public class SplitCollectionEditor extends CustomCollectionEditor{
 
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
-        if (text == null || text.isEmpty()) {
+        if (StringUtils.isEmpty(text)) {
             super.setValue(super.createCollection(this.collectionType, 0));
         } else {
             super.setValue(text.split(splitRegex));

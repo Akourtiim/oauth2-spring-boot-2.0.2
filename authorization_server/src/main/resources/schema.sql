@@ -43,7 +43,6 @@ CREATE TABLE authority (
   primary key (id)
 );
 drop table if exists credentials;
-
 CREATE TABLE credentials (
   id  integer,
   enabled boolean not null,

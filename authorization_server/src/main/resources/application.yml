@@ -1,20 +1,24 @@
-spring:
-    datasource:
-        hikari:
-            connection-test-query: SELECT 1 FROM DUAL
-            minimum-idle: 1
-            maximum-pool-size: 5
-        driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://localhost/oauth2
-        username: root
-        password:
-        initialization-mode: always
-    jpa:
-      hibernate:
-        ddl-auto: none
-# --- server
 server:
   port: 8081
 
+spring:
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+  h2:
+    console:
+      enabled: true
+  datasource:
+    jdbc-url: jdbc:h2:mem:oauth;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: root
+    password:
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.H2Dialect
 
-
+logging:
+  level:
+    org.springframework.security: DEBUG
