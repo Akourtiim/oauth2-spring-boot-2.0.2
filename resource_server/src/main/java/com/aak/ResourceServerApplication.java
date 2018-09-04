@@ -1,6 +1,9 @@
 package com.aak;
 
-import com.zaxxer.hikari.HikariDataSource;
+import java.util.Collections;
+
+import javax.sql.DataSource;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,8 +18,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import javax.sql.DataSource;
-import java.util.Collections;
+import com.zaxxer.hikari.HikariDataSource;
 
 @SpringBootApplication
 @Configuration

@@ -3,15 +3,23 @@ spring:
         hikari:
             connection-test-query: SELECT 1 FROM DUAL
             minimum-idle: 1
-            maximum-pool-size: 5
-        driver-class-name: com.mysql.jdbc.Driver
-        jdbc-url: jdbc:mysql://localhost/oauth2
-        username: root
+            maximum-pool-size: 1
+        schema-username: sa
+        schema-password:
+        schema:
+           - classpath:/schema.sql
+        driver-class-name: org.h2.Driver
+        jdbc-url: jdbc:h2:file:~/.h2/testdb;AUTO_SERVER=TRUE
+        username: sa
         password:
         initialization-mode: always
     jpa:
       hibernate:
         ddl-auto: none
+    h2:
+       console:
+          path: /h2-console
+          enabled: true
 # --- server
 server:
   port: 8083
