@@ -1,0 +1,25 @@
+authorization_code flow
+GET request to get a authorization_code:
+http://localhost:8081/oauth/authorize?response_type=code&client_id=curl_client&redirect_uri=http%3a%2f%2f127.0.0.1&scope=read&state=mystate
+curl -s --location --include -X GET 'localhost:8081/oauth/authorize?response_type=code&client_id=curl_client&scope=read&state=mystate&redirect_uri=http%3a%2f%2f127.0.0.1'
+
+POST request to get the access_token
+http://localhost:8081/oauth/token?client_id=curl_client&secret=user&redirect_uri=http%3a%2f%2f127.0.0.1&scope=read&state=mystate&grant_type=authorization_code&code=xxxxxx
+
+
+implicit flow
+GET request to get access_token directly
+http://localhost:8081/oauth/authorize?response_type=token&client_id=curl_client&scope=read&redirect_uri=http%3a%2f%2f127.0.0.1
+
+curl -s --location --include -X GET 'http://localhost:8081/oauth/authorize?response_type=token&client_id=curl_client&scope=read&redirect_uri=http%3a%2f%2f127.0.0.1'
+
+
+client_credentials
+POST request to get access_token directly
+curl -s -X POST --location --include -u curl_client:user 'http://localhost:8081/oauth/token?grant_type=client_credentials'
+
+password
+curl -s -X POST --location --include -u curl_client:user 'http://localhost:8081/oauth/token?grant_type=client_credentials&username=oauth_admin&password=user'
+
+
+refresh_token
