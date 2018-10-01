@@ -13,7 +13,12 @@ import java.util.List;
 @Table(name ="credentials")
 public class Credentials implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
