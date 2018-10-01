@@ -1,0 +1,5 @@
+xxx 1. jdbc oauth2 solution
+xxx 2. Store jwt
+xxx 3. Generate the same access token before expiration
+4. Remove all access token and refresh_token when logout
+5. Expose token validation service

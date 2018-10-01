@@ -59,7 +59,7 @@ CREATE TABLE credentials_authorities (
 );
 drop table if exists oauth_code;
 create table oauth_code (
-  code VARCHAR(255), authentication VARBINARY(255)
+  code VARCHAR(255), authentication VARBINARY(4096)
 );
 drop table if exists oauth_approvals;
 create table oauth_approvals (

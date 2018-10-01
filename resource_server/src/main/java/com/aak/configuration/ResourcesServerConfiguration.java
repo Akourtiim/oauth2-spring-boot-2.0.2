@@ -37,8 +37,10 @@ public class ResourcesServerConfiguration  extends ResourceServerConfigurerAdapt
     public void configure(HttpSecurity http) throws Exception{
 
 
+        http.headers().frameOptions().sameOrigin();
         http
                 .authorizeRequests()
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/**").access("#oauth2.hasScope('read')")
                 .antMatchers(HttpMethod.POST, "/**").access("#oauth2.hasScope('write')")
                 .antMatchers(HttpMethod.PATCH, "/**").access("#oauth2.hasScope('write')")
